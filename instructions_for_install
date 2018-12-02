@@ -1,0 +1,103 @@
+------------------------------------------------------------------------------------------
+INTERA SDK INSTRUCTIONS
+------------------------------------------------------------------------------------------
+
+sudo apt-get update
+
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros-latest.list'
+
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+
+sudo apt-get install ros-kinetic-desktop-full
+
+sudo rosdep init
+
+rosdep update
+
+sudo apt-get install python-rosinstall
+
+------------------------------------------------------------------------------------------
+CREATE A DEVELOPMENT WORKSPACE
+------------------------------------------------------------------------------------------
+
+mkdir -p ~/ros_ws/src
+
+source /opt/ros/kinetic/setup.bash
+
+cd ~/ros_ws
+
+catkin_make
+
+------------------------------------------------------------------------------------------
+INSTALL DEPENDENCIES
+------------------------------------------------------------------------------------------
+
+sudo apt-get update
+
+pip install -U rosdep rosinstall_generator wstool rosinstall six vcstools
+
+------------------------------------------------------------------------------------------
+INTERA SDK INSTRUCTIONS
+------------------------------------------------------------------------------------------
+
+sudo apt-get update
+
+sudo apt-get install git-core python-argparse python-wstool python-vcstools python-rosdep ros-kinetic-control-msgs ros-kinetic-joystick-drivers ros-kinetic-xacro ros-kinetic-tf2-ros ros-kinetic-rviz ros-kinetic-cv-bridge ros-kinetic-actionlib ros-kinetic-actionlib-msgs ros-kinetic-dynamic-reconfigure ros-kinetic-trajectory-msgs ros-kinetic-rospy-message-converter
+
+cd ~/ros_ws/src
+
+wstool init .
+
+git clone https://github.com/RethinkRobotics/sawyer_robot.git
+
+wstool merge sawyer_robot/sawyer_robot.rosinstall
+
+wstool update
+
+source /opt/ros/kinetic/setup.bash
+
+cd ~/ros_ws
+
+catkin_make
+#this isn't working at all for me???????????
+
+cp ~/ros_ws/src/intera_sdk/intera.sh ./
+
+subl ~/ros_ws/intera.sh
+###change ros_version="indigo" to ros_version="kinetic"
+
+------------------------------------------------------------------------------------------
+SIMULATOR INSTRUCTIONS
+------------------------------------------------------------------------------------------
+
+sudo apt-get install gazebo7 ros-kinetic-qt-build ros-kinetic-gazebo-ros-control ros-kinetic-gazebo-ros-pkgs ros-kinetic-ros-control ros-kinetic-control-toolbox ros-kinetic-realtime-tools ros-kinetic-ros-controllers ros-kinetic-xacro python-wstool ros-kinetic-tf-conversions ros-kinetic-kdl-parser ros-kinetic-sns-ik-lib
+
+cd ~/ros_ws/src
+
+git clone https://github.com/RethinkRobotics/sawyer_simulator.git
+
+cd ~/ros_ws/src
+
+wstool init .
+
+wstool merge sawyer_simulator/sawyer_simulator.rosinstall
+
+wstool update
+
+cd ~/ros_ws
+
+catkin_make
+
+------------------------------------------------------------------------------------------
+RUNNING THE SIMULATOR
+------------------------------------------------------------------------------------------
+
+cd ~/ros_ws
+
+./intera.sh sim
+
+roslaunch sawyer_gazebo sawyer_world.launch
+
+rostopic list
+
+rostopic echo /robot/state
