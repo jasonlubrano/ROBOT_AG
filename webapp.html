@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	 <link rel="stylesheet" href="webapp.css">
+  <title>Planting Robot</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  </head>
+  <body>
+<script>
+
+var saveclass = null;
+
+
+
+$('select').each(function(){
+    var $this = $(this), numberOfOptions = $(this).children('option').length;
+  
+    $this.addClass('select-hidden'); 
+    $this.wrap('<div class="select"></div>');
+    $this.after('<div class="select-styled"></div>');
+
+    var $styledSelect = $this.next('div.select-styled');
+    $styledSelect.text($this.children('option').eq(0).text());
+  
+    var $list = $('<ul />', {
+        'class': 'select-options'
+    }).insertAfter($styledSelect);
+  
+    for (var i = 0; i < numberOfOptions; i++) {
+        $('<li />', {
+            text: $this.children('option').eq(i).text(),
+            rel: $this.children('option').eq(i).val()
+        }).appendTo($list);
+    }
+  
+    var $listItems = $list.children('li');
+  
+    $styledSelect.click(function(e) {
+        e.stopPropagation();
+        $('div.select-styled.active').not(this).each(function(){
+            $(this).removeClass('active').next('ul.select-options').hide();
+        });
+        $(this).toggleClass('active').next('ul.select-options').toggle();
+    });
+  
+    $listItems.click(function(e) {
+        e.stopPropagation();
+        $styledSelect.text($(this).text()).removeClass('active');
+        $this.val($(this).attr('rel'));
+        $list.hide();
+        //console.log($this.val());
+    });
+  
+    $(document).click(function() {
+        $styledSelect.removeClass('active');
+        $list.hide();
+    });
+
+});
+</script>
+
+<form action="mailto:clairemarie.martin@yahoo.com" method="post" enctype="text/plain">
+<h1 style = "font-size: 50px; padding-left: 22%; padding-top:50px;">Welcome to Your Garden!</h1>
+<div class="container" style = "padding-top: 80px;">
+  
+  <div class="row" style = "height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+    <div class="col-sm-3 dropdown" style="background-color:lightgreen; height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+    <div class="col-sm-3 dropdown" style="background-color:green; height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+    <div class="col-sm-3 dropdown" style="background-color:lightgreen; height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+    <div class="col-sm-3 dropdown" style="background-color:green;height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+  </div>
+  
+  
+  <div class="row" style = "height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+    <div class="col-sm-3 dropdown" style="background-color:green; height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+    <div class="col-sm-3 dropdown" style="background-color:lightgreen; height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+    <div class="col-sm-3 dropdown" style="background-color:green; height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+      <div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+    </div>
+    <div class="col-sm-3" style="background-color:lightgreen;height:225px; border-style: solid; border-width: 5px; border-color: darkgreen;">
+
+    	<div style = "padding-left: 30%; padding-top: 35%;">
+
+<select id="mounth" onchange="saveTheme(this.value);">
+    <option value="hide">-- Plant --</option>
+    <option value="None" rel="icon-temperature">Lilly</option>
+    <option value="Peony">Marigold</option>
+    <option value="Marigold">Peony</option>
+    <option value="Lilly">None</option>
+    </select> 
+</div>
+
+</div>
+  </div>
+  <div class="row">
+  	<div class="col-sm-9">
+  	</div>
+  	<div class="col-sm-3">
+     <p>      </p>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="col-sm-10">
+  	</div>
+  	<div class="col-sm-2">
+  		<button type="button">Lets Plant!</button>
+  	</div>
+  </div>
+</div>
+  
+
+</form>
+
+</body>
+</html>
