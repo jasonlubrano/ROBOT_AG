@@ -1,0 +1,55 @@
+#jason lubrano, sawyer arm positions
+
+# joint names
+joint_names = ['right_j0', 'right_j1', 'right_j2', 'right_j3', 'right_j4', 'right_j5', 'right_j6']
+#there is the head swivel that is on thadeus branch, make sure that is as straight as possible.
+
+# gripper code ?
+gripper_open
+gripper_close
+# 2 pos
+
+# starting positon
+home_positilon = [-0.4500732421875, -1.3575419921875, 0.298607421875, 2.448572265625, -0.066544921875, 0.5279326171875, 3.0836171875]
+# 1 pos
+
+# CV positions -> mostly for the overhead camera to see the items
+cv_lookat_plot
+cv_lookat_plants
+cv_lookat_tools
+cv_lookat_dump
+# 4 pos
+
+# hover positions
+hover_over_plants
+hover_over_plot
+hover_over_dump
+hover_over_tools
+# 4 pos
+
+# plants -> seperated based on color
+down_plant_1
+down_plant_2
+down_plant_3
+down_plant_4
+# 4 pos
+
+# plots
+down_plot_1
+down_plot_2
+down_plot_3
+down_plot_4
+# 4 plots
+
+# tools
+down_tool_1
+down_tool_2
+down_tool_3
+down_tool_4
+# 4 tools
+
+# dump -> maybe just have the gripper drop the item or place, dont matter
+down_dump
+# 1 pos
+
+# total of 24 pos
