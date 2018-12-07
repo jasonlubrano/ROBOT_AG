@@ -65,7 +65,7 @@ dump = [-1.7319931640625, -0.4028916015625, 0.7388515625, 1.524953125, -0.933049
 
 new_position = {}
 for i in range(len(joint_names)):
-	new_position[joint_names[i]] = dump[i]
+	new_position[joint_names[i]] = home[i]
 
 
 # In[10]:
