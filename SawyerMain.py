@@ -77,10 +77,46 @@ class PlantInstruction:
     def get_sawyer_movements(self):
         movement_list = []
         
+        movement_list.append(SawyerMovement(ROScalls.get_current_position(limb), ROScalls.home))
+
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_1))
+        movement_list.append(SawyerMovement(ROScalls.down_plot_1, ROScalls.hover_plot))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_2))
+        movement_list.append(SawyerMovement(ROScalls.down_plot_2, ROScalls.hover_plot))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
+        
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_3))
+        movement_list.append(SawyerMovement(ROScalls.down_plot_3, ROScalls.hover_plot))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_4))
+        movement_list.append(SawyerMovement(ROScalls.down_plot_4, ROScalls.hover_plot))
+        
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+        
+        return movement_list
+        """
         # TODO
         movement_list.append(SawyerMovement(ROScalls.get_current_position(limb), ROScalls.home))
         # Step 1: Move from home -> hover over seed holder
-        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_seeds))
+        # grab the first seed
+        movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.down_seed_1))
+
+        movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.down_seed_1))
+        
+
         # Step 2: Move from holder hover -> hover over specified seed slot
         movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_1))
         # Step 3: Move from slot hover -> around seed (fake plant) head
@@ -104,7 +140,7 @@ class PlantInstruction:
         # Step 12: Move from plant over -> home
         movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
         return movement_list
-        
+        """
 
 class WeedInstruction:
     def __init__(self, cell_to_weed):
@@ -176,7 +212,7 @@ if __name__ == '__main__':
             main_instruction_set.append(movement)
     
     for movement in main_instruction_set:
-        rospy.sleep(0.5)
+        #rospy.sleep(0.5)
         movement.get_ROS_call(limb)
 
 
