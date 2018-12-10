@@ -4,16 +4,10 @@ import intera_interface
 #import <claires frontend> as frontEnd
 #import <jason+thadeus movement calls> as ROScalls
 import sawyer_python_file as ROScalls
+import os.path
 
+print(os.path.abspath(rospy.__file__))
 
-# In[3]:
-rospy.init_node("sawyer")
-# In[4]:
-limb = intera_interface.Limb('right')
-# In[5]:
-robot_state = intera_interface.RobotEnable()
-# In[6]:
-robot_state.enable()
 
 """
 # Main function outline:
@@ -88,23 +82,23 @@ class PlantInstruction:
         # Step 1: Move from home -> hover over seed holder
         movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
         # Step 2: Move from holder hover -> hover over specified seed slot
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_1))
         # Step 3: Move from slot hover -> around seed (fake plant) head
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.down_plot_1, ROScalls.hover_plot))
         # Step 4: Close grippers to grab seed
         # movement_list.append(GripperMovement(ROScalls.gripperactions.close))
         # Step 5: Move from around seed -> slot hover 
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_2))
         # Step 6: Move from slot hover -> holder hover 
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.down_plot_2, ROScalls.hover_plot))
         # Step 7: Move from holder hover -> home 
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_3))
         # Step 8: Move from home -> hover over plant cell
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.down_plot_3, ROScalls.hover_plot))
         # Step 9: Move from plant hover -> into plant base 
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_4))
         # Step 10: Open grippers to release seed
-        # movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.down_plot_4, ROScalls.hover_plot))
         # Step 11: Move from plant base -> plant hover
         # movement_list.append()
         # Step 12: Move from plant over -> home
@@ -145,7 +139,7 @@ class SawyerMovement:
     def __init__(self, start_pos, end_pos):
         # These are x/y coordinates returned by ROScalls library (Jason+Thadeus)
         self.start_pos = start_pos
-        self.end_post = end_pos
+        self.end_pos = end_pos
         
     def get_ROS_call(self, limb):
         # This will execute the relevant function from within ROScalls
@@ -182,6 +176,7 @@ if __name__ == '__main__':
             main_instruction_set.append(movement)
     
     for movement in main_instruction_set:
+        rospy.sleep(0.5)
         movement.get_ROS_call(limb)
 
 
@@ -200,4 +195,4 @@ if __name__ == '__main__':
             
         # Step 5: Execute cell instruction
         main_instruction.get_sawyer_movements()
-        """
+    """

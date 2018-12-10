@@ -57,7 +57,7 @@ def get_current_position(limb):
 
 # In[9]:
 #new_position = copy.copy(current_position)
-
+    
 joint_names = ['right_j0', 'right_j1', 'right_j2', 'right_j3', 'right_j4', 'right_j5', 'right_j6']
 ##### DELET HEAD PAN, TORSO!
 #[farm]	[head_pan, right_j0, right_j1, right_j2, right_j3, right_j4, right_j5, right_j6, torso_t0]
@@ -67,7 +67,7 @@ joint_names = ['right_j0', 'right_j1', 'right_j2', 'right_j3', 'right_j4', 'righ
 home =              [-0.0479130859375,-0.956372070313,-1.55625390625,1.59204199219,0.622408203125,1.55823828125,-0.030720703125]
 
 # hover positions
-hover_seeds =        [-0.43649609375,-0.772165039063,-0.244763671875,1.48357128906,0.201188476562,0.982875,4.11783691406]
+hover_seeds =       [-0.43649609375,-0.772165039063,-0.244763671875,1.48357128906,0.201188476562,0.982875,4.11783691406]
 hover_plot =        [0.040599609375,-0.827349609375,-0.038009765625,1.81553417969,0.164611328125,0.55252734375,4.68306445312]
 hover_dump =        [-0.731625,-1.13401757812,-0.303334960938,2.09787695313,0.103762695313,0.694225585937,3.82856640625]
 
@@ -104,7 +104,7 @@ def create_new_position(position, limb):
     new_position = {}
     for i in range(len(joint_names)):
         new_position[joint_names[i]] = position[i]
-    #move_to_position(new_position, limb)
+    move_to_position(new_position, limb)
 
 
 """
