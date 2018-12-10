@@ -1,6 +1,19 @@
-import <mitchs CV> as weedFinder
-import <claires frontend> as frontEnd
-import <jason+thadeus movement calls> as ROScalls
+import rospy
+import intera_interface
+#import <mitchs CV> as weedFinder
+#import <claires frontend> as frontEnd
+#import <jason+thadeus movement calls> as ROScalls
+import sawyer_python_file as ROScalls
+
+
+# In[3]:
+rospy.init_node("sawyer")
+# In[4]:
+limb = intera_interface.Limb('right')
+# In[5]:
+robot_state = intera_interface.RobotEnable()
+# In[6]:
+robot_state.enable()
 
 """
 # Main function outline:
@@ -59,40 +72,44 @@ import <jason+thadeus movement calls> as ROScalls
 """
 
 
+
 # See pseudocode for Step 5 in comment block at top of file
 class PlantInstruction:
     def __init__(self, seed_to_plant, cell_to_plant):
         self.seed_to_plant = seed_to_plant
         self.cell_to_plant = cell_to_plant
+
         
     def get_sawyer_movements(self):
         movement_list = []
         
         # TODO
+        movement_list.append(SawyerMovement(ROScalls.get_current_position(limb), ROScalls.home))
         # Step 1: Move from home -> hover over seed holder
-        movement_list.append(SawyerMovement(ROScalls.positions.home, ROScalls.positions.seed_holder_hover))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
         # Step 2: Move from holder hover -> hover over specified seed slot
-        movement_list.append()
+        # movement_list.append()
         # Step 3: Move from slot hover -> around seed (fake plant) head
-        movement_list.append()
+        # movement_list.append()
         # Step 4: Close grippers to grab seed
-        movement_list.append(GripperMovement(ROScalls.gripperactions.close))
+        # movement_list.append(GripperMovement(ROScalls.gripperactions.close))
         # Step 5: Move from around seed -> slot hover 
-        movement_list.append()
+        # movement_list.append()
         # Step 6: Move from slot hover -> holder hover 
-        movement_list.append()
+        # movement_list.append()
         # Step 7: Move from holder hover -> home 
-        movement_list.append()
+        # movement_list.append()
         # Step 8: Move from home -> hover over plant cell
-        movement_list.append()
+        # movement_list.append()
         # Step 9: Move from plant hover -> into plant base 
-        movement_list.append()
+        # movement_list.append()
         # Step 10: Open grippers to release seed
-        movement_list.append()
+        # movement_list.append()
         # Step 11: Move from plant base -> plant hover
-        movement_list.append()
+        # movement_list.append()
         # Step 12: Move from plant over -> home
-        movement_list.append()
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+        return movement_list
         
 
 class WeedInstruction:
@@ -104,7 +121,7 @@ class WeedInstruction:
         
         # TODO
         # Step 1: Move from home -> hover over plant cell
-        movement_list.append(SawyerMovement(ROScalls.positions.home, ROScalls.positions.seed_holder_hover))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
         # Step 2: Move from plant hover -> into plant base
         # Step 3: Close grippers around weed  
         # Step 4: Move from plant base -> plant hover 
@@ -130,15 +147,23 @@ class SawyerMovement:
         self.start_pos = start_pos
         self.end_post = end_pos
         
-    def get_ROS_call(self):
+    def get_ROS_call(self, limb):
         # This will execute the relevant function from within ROScalls
         # TODO
-        pass
+        ROScalls.create_new_position(self.end_pos, limb)
 
 if __name__ == '__main__':
+    # In[3]:
+    rospy.init_node("sawyer")
+    # In[4]:
+    limb = intera_interface.Limb('right')
+    # In[5]:
+    robot_state = intera_interface.RobotEnable()
+    # In[6]:
+    robot_state.enable()
 
     # Step 1: Get instructions from Claire's frontend
-    plant_list = frontEnd.get_user_input()
+    plant_list = [0] #frontEnd.get_user_input()
     
     # Output format: plant_list = [p0, p1, p2, p3] or something similar...
     # |----|----|
@@ -151,13 +176,22 @@ if __name__ == '__main__':
     # Note that this is always done in order p0->...->p3
     main_instruction_set = []
     for cell_number, seed in enumerate(plant_list):
-        main_instruction_set.append(PlantInstruction(seed, cell_number))
+        new_plant_movements = PlantInstruction(seed, cell_number)
+        instruction_set = new_plant_movements.get_sawyer_movements()
+        for movement in instruction_set:
+            main_instruction_set.append(movement)
+    
+    for movement in main_instruction_set:
+        movement.get_ROS_call(limb)
+
+
         
     # Step 6: Repeat steps 3-5 for all instructions
-    for cell_numer, main_instruction in enumerate(main_instruction_set):
+    """
+    for cell_number, main_instruction in enumerate(main_instruction_set):
         
         # Step 3: Check first cell in instruction list for weed with Mitch's CV
-        weed_found = weedFinder.check_cell(cell_number)
+        weed_found = False #weedFinder.check_cell(cell_number)
         
         # Step 4: Pull weed if necessary
         if weed_found:
@@ -166,3 +200,4 @@ if __name__ == '__main__':
             
         # Step 5: Execute cell instruction
         main_instruction.get_sawyer_movements()
+        """
