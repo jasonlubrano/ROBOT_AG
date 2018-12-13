@@ -104,14 +104,21 @@ class WeedInstruction:
 
         # TODO
         # Step 1: Move from home -> hover over plant cell
-        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot))
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_plot[self.cell_to_weed]))
         # Step 2: Move from plant hover -> into plant base
-        # Step 3: Close grippers around weed  
-        # Step 4: Move from plant base -> plant hover 
-        # Step 5: Move from plant hover -> home 
-        # Step 6: Move from home -> disposal area 
-        # Step 7: Open grippers to release weed 
+        movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot[self.cell_to_weed]))
+        # Step 3: Close grippers around weed
+        movement_list.append(GripperMovement('close'))
+        # Step 4: Move from plant base -> plant hover
+        movement_list.append(SawyerMovement(ROScalls.down_plot[self.cell_to_weed], ROScalls.hover_plot[self.cell_to_weed]))
+        # Step 5: Move from plant hover -> home
+        movement_list.append(SawyerMovement(ROScalls.hover_plot[self.cell_to_weed], ROScalls.home))
+        # Step 6: Move from home -> disposal area
+        movement_list.append(SawyerMovement(ROScalls.home, ROScalls.disposal))
+        # Step 7: Open grippers to release weed
+        movement_list.append(GripperMovement('close'))
         # Step 8: Move from disposal -> home
+        movement_list.append(SawyerMovement(ROScalls.disposal, ROScalls.home))
 
 
 class GripperMovement:
