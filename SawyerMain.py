@@ -194,73 +194,165 @@ class PlantInstruction:
 	#go down to the plant
 	def down_plot_1(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_1))
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_1, ROScalls.down_plot_1))
 		#plant whatever then go up
 		return movement_lists
 
 	def down_plot_2(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_2))
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_2, ROScalls.down_plot_2))
 		#plant whatever then go up
 		return movement_lists
 
 	def down_plot_3(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_3))
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_3, ROScalls.down_plot_3))
 		#plant whatever
 		return movement_lists
 
 	def down_plot_4(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.down_plot_4))
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_4, ROScalls.down_plot_4))
 		#plant whatever
 		return movement_lists
 
 	#from the plot to the hover plot
 	def up_plot_1(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.down_plot_1, ROScalls.hover_plot))
+		movement_list.append(SawyerMovement(ROScalls.down_plot_1, ROScalls.hover_plot_1))
 		#plant whatever then go up
 		return movement_lists
 
 	def up_plot_2(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.down_plot_2, ROScalls.hover_plot))
+		movement_list.append(SawyerMovement(ROScalls.down_plot_2, ROScalls.hover_plot_2))
 		#plant whatever then go up
 		return movement_lists
 
 	def up_plot_3(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.down_plot_3, ROScalls.hover_plot))
+		movement_list.append(SawyerMovement(ROScalls.down_plot_3, ROScalls.hover_plot_3))
 		#plant whatever then go up
 		return movement_lists
 
 	def up_plot_4(self):
 		movement_list = []
-		movement_list.append(SawyerMovement(ROScalls.down_plot_4, ROScalls.hover_plot))
+		movement_list.append(SawyerMovement(ROScalls.down_plot_4, ROScalls.hover_plot_4))
 		#plant whatever then go up
 		return movement_lists
 
+	#functions for the seeds
+	#go home to the hover seeds
+	def home_to_hover_seeds(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_seeds))
+		return movement_lists
 
-	#seed functions
-	def hover_seeds(self):
+	#from seeds to hover home
+	def hover_seeds_to_home(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.home))
+		return movement_lists
 
-	def hover_seed_1(self):
+	#from general hover position to the seds
+	def down_hover_seed_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_1))
+		#plant whatever then go up
+		return movement_lists
 
-	def hover_seed_2(self):
-	
-	def hover_seed_3(self):
-	
-	def hover_seed_4(self):
+	def down_hover_seed_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_2))
+		#plant whatever then go up
+		return movement_lists
 
+	def down_hover_seed_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_3))
+		#plant whatever then go up
+		return movement_lists
+
+	def down_hover_seed_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_4))
+		#plant whatever then go up
+		return movement_lists
+
+	#from the hover seed positions to the new positions
+	def up_hover_seed_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_1, ROScalls.hover_seeds))
+		#plant whatever then go up
+		return movement_lists
+
+	def up_hover_seed_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_2, ROScalls.hover_seeds))
+		#plant whatever then go up
+		return movement_lists
+
+	def up_hover_seed_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_3, ROScalls.hover_seeds))
+		#plant whatever then go up
+		return movement_lists
+
+	def up_hover_seed_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_4, ROScalls.hover_seeds))
+		#plant whatever then go up
+		return movement_lists
+
+	#from the specific seed hover to going down to get the seeds
 	def down_seed_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_1, ROScalls.down_seed_1))
+		#plant whatever then go up
+		return movement_lists
 
 	def down_seed_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_2, ROScalls.down_seed_2))
+		#plant whatever then go up
+		return movement_lists
 
 	def down_seed_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_3, ROScalls.down_seed_3))
+		#plant whatever then go up
+		return movement_lists
 
 	def down_seed_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_seed_4, ROScalls.down_seed_4))
+		#plant whatever then go up
+		return movement_lists
 
+	#going from the down seeds to hover above the seeds
+	def up_seed_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_seed_1, ROScalls.hover_seed_1))
+		#plant whatever then go up
+		return movement_lists
+
+	def up_seed_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_seed_2, ROScalls.hover_seed_2))
+		#plant whatever then go up
+		return movement_lists
+
+	def up_seed_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_seed_3, ROScalls.hover_seed_3))
+		#plant whatever then go up
+		return movement_lists
+
+	def up_seed_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_seed_4, ROScalls.hover_seed_4))
+		#plant whatever then go up
+		return movement_lists
 
 
 class WeedInstruction:
@@ -277,7 +369,7 @@ class WeedInstruction:
         # Step 3: Close grippers around weed  
         # Step 4: Move from plant base -> plant hover 
         # Step 5: Move from plant hover -> home 
-        # Step 6: Move from home -> disposal area 
+        # Step 6: Move from home -> disposal area aa
         # Step 7: Open grippers to release weed 
         # Step 8: Move from disposal -> home
    
