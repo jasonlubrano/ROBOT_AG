@@ -530,9 +530,13 @@ if __name__ == '__main__':
 
     #pseudocode, of course something will be done for each one, but this is the general idea
     # start
+    # state = plot_1
     # 	(something_in_plot_1) ? ((is_what_we_want) ? move_to_plot_2: weed_plot_1 -> plant_plot_1) : plant_plot_1
+    # state = plot_2
     # 	(something_in_plot_2) ? ((is_what_we_want) ? move_to_plot_3: weed_plot_2 -> plant_plot_2) : plant_plot_2
+    # state = plot_3
     # 	(something_in_plot_3) ? ((is_what_we_want) ? move_to_plot_4: weed_plot_3 -> plant_plot_3) : plant_plot_3
+    # state = plot_4
     # 	(something_in_plot_4) ? ((is_what_we_want) ? finish : weed_plot_4 -> plant_plot_4) : plant_plot_4
     # finish
 
