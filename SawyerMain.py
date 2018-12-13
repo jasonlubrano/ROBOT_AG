@@ -116,9 +116,11 @@ class PlantInstruction:
     
     #plot functions
     #call the previous heiarchy before
+    # p is before the function to indicate that it is a planting function
+    # w is infront a function to indicate that it is a weeding function
 
     #from home to hover
-    def home_to_hover_plot(self):
+    def p_home_to_hover_plot(self):
     	#initialize the movements needed 
     	movement_list = []
 		#go down
@@ -126,36 +128,36 @@ class PlantInstruction:
 		return movement_list
 
 	#hover plot to home
-    def home_to_hover_plot(self):
-    	#initialize the movements needed 
-    	movement_list = []
+	def p_home_to_hover_plot(self):
+		#initialize the movements needed 
+		movement_list = []
 		#go down
 		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
 		return movement_list
 
 	#hover down to the plots
-	def down_hover_plot_1(self):
+	def p_down_hover_plot_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_1))
 		#plant whatever then go up
 		#should we implement a call here?
 		return movement_lists
 
-	def down_hover_plot_2(self):
+	def p_down_hover_plot_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_2))
 		#plant whatever then go up
 		#should we implement a call here?
 		return movement_lists
 
-	def down_hover_plot_3(self):
+	def p_down_hover_plot_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_3))
 		#plant whatever then go up
 		#should we implement a call here?
 		return movement_lists
 
-	def down_hover_plot_4(self):
+	def p_down_hover_plot_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_4))
 		#plant whatever then go up
@@ -163,28 +165,28 @@ class PlantInstruction:
 		return movement_lists
 
 	#up hover from the plots
-	def up_hover_plot_1(self):
+	def p_up_hover_plot_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_1, ROScalls.hover_plot))
 		#plant whatever then go up
 		#should we implement a call here?
 		return movement_lists
 	
-	def up_hover_plot_2(self):
+	def p_up_hover_plot_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_2, ROScalls.hover_plot))
 		#plant whatever then go up
 		#should we implement a call here?
 		return movement_lists
 
-	def up_hover_plot_3(self):
+	def p_up_hover_plot_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_3, ROScalls.hover_plot))
 		#plant whatever then go up
 		#should we implement a call here?
 		return movement_lists
 
-	def up_hover_plot_4(self):
+	def p_up_hover_plot_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_4, ROScalls.hover_plot))
 		#plant whatever then go up
@@ -192,50 +194,50 @@ class PlantInstruction:
 		return movement_lists
 	
 	#go down to the plant
-	def down_plot_1(self):
+	def p_down_plot_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_1, ROScalls.down_plot_1))
 		#plant whatever then go up
 		return movement_lists
 
-	def down_plot_2(self):
+	def p_down_plot_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_2, ROScalls.down_plot_2))
 		#plant whatever then go up
 		return movement_lists
 
-	def down_plot_3(self):
+	def p_down_plot_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_3, ROScalls.down_plot_3))
 		#plant whatever
 		return movement_lists
 
-	def down_plot_4(self):
+	def p_down_plot_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_plot_4, ROScalls.down_plot_4))
 		#plant whatever
 		return movement_lists
 
 	#from the plot to the hover plot
-	def up_plot_1(self):
+	def p_up_plot_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_plot_1, ROScalls.hover_plot_1))
 		#plant whatever then go up
 		return movement_lists
 
-	def up_plot_2(self):
+	def p_up_plot_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_plot_2, ROScalls.hover_plot_2))
 		#plant whatever then go up
 		return movement_lists
 
-	def up_plot_3(self):
+	def p_up_plot_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_plot_3, ROScalls.hover_plot_3))
 		#plant whatever then go up
 		return movement_lists
 
-	def up_plot_4(self):
+	def p_up_plot_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_plot_4, ROScalls.hover_plot_4))
 		#plant whatever then go up
@@ -243,117 +245,100 @@ class PlantInstruction:
 
 	#functions for the seeds
 	#go home to the hover seeds
-	def home_to_hover_seeds(self):
+	def p_home_to_hover_seeds(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_seeds))
 		return movement_lists
 
 	#from seeds to hover home
-	def hover_seeds_to_home(self):
+	def p_hover_seeds_to_home(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.home))
 		return movement_lists
 
 	#from general hover position to the seds
-	def down_hover_seed_1(self):
+	def p_down_hover_seed_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_1))
-		#plant whatever then go up
 		return movement_lists
 
-	def down_hover_seed_2(self):
+	def p_down_hover_seed_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_2))
-		#plant whatever then go up
 		return movement_lists
 
-	def down_hover_seed_3(self):
+	def p_down_hover_seed_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_3))
-		#plant whatever then go up
 		return movement_lists
 
-	def down_hover_seed_4(self):
+	def p_down_hover_seed_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seeds, ROScalls.hover_seed_4))
-		#plant whatever then go up
 		return movement_lists
 
 	#from the hover seed positions to the new positions
-	def up_hover_seed_1(self):
+	def p_up_hover_seed_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_1, ROScalls.hover_seeds))
-		#plant whatever then go up
 		return movement_lists
 
-	def up_hover_seed_2(self):
+	def p_up_hover_seed_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_2, ROScalls.hover_seeds))
-		#plant whatever then go up
 		return movement_lists
 
-	def up_hover_seed_3(self):
+	def p_up_hover_seed_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_3, ROScalls.hover_seeds))
-		#plant whatever then go up
 		return movement_lists
 
-	def up_hover_seed_4(self):
+	def p_up_hover_seed_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_4, ROScalls.hover_seeds))
-		#plant whatever then go up
 		return movement_lists
 
 	#from the specific seed hover to going down to get the seeds
-	def down_seed_1(self):
+	def p_down_seed_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_1, ROScalls.down_seed_1))
-		#plant whatever then go up
 		return movement_lists
 
-	def down_seed_2(self):
+	def p_down_seed_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_2, ROScalls.down_seed_2))
-		#plant whatever then go up
 		return movement_lists
 
-	def down_seed_3(self):
+	def p_down_seed_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_3, ROScalls.down_seed_3))
-		#plant whatever then go up
 		return movement_lists
 
-	def down_seed_4(self):
+	def p_down_seed_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.hover_seed_4, ROScalls.down_seed_4))
-		#plant whatever then go up
 		return movement_lists
 
 	#going from the down seeds to hover above the seeds
-	def up_seed_1(self):
+	def p_up_seed_1(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_seed_1, ROScalls.hover_seed_1))
-		#plant whatever then go up
 		return movement_lists
 
-	def up_seed_2(self):
+	def p_up_seed_2(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_seed_2, ROScalls.hover_seed_2))
-		#plant whatever then go up
 		return movement_lists
 
-	def up_seed_3(self):
+	def p_up_seed_3(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_seed_3, ROScalls.hover_seed_3))
-		#plant whatever then go up
 		return movement_lists
 
-	def up_seed_4(self):
+	def p_up_seed_4(self):
 		movement_list = []
 		movement_list.append(SawyerMovement(ROScalls.down_seed_4, ROScalls.hover_seed_4))
-		#plant whatever then go up
 		return movement_lists
-
 
 class WeedInstruction:
     def __init__(self, cell_to_weed):
@@ -361,6 +346,9 @@ class WeedInstruction:
         
     def get_sawyer_movements(self):
         movement_list = []
+        #could this be what calls the list?
+        #the original code did not work at runntime, which is how we are going to have to do everything
+        #unless we implement some multithreaded system
         
         # TODO
         # Step 1: Move from home -> hover over plant cell
@@ -372,7 +360,129 @@ class WeedInstruction:
         # Step 6: Move from home -> disposal area aa
         # Step 7: Open grippers to release weed 
         # Step 8: Move from disposal -> home
-   
+
+	# p is before the function to indicate that it is a planting function
+	# w is infront a function to indicate that it is a weeding function
+	
+	def w_home_to_hover_dump(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.home, ROScalls.hover_dump))
+		#guess this should be where wee call the shit to dump the plant
+		return movement_lists
+    def w_hover_dump_to_home(self):
+    	movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_dump, ROScalls.home))
+		#guess this should be where wee call the shit to dump the plant
+		return movement_lists
+		#hover plot to home
+    def w_home_to_hover_plot(self):
+    	#initialize the movements needed 
+    	movement_list = []
+		#go down
+		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.home))
+		return movement_list
+
+	#hover down to the plots
+	def w_down_hover_plot_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_1))
+		#should we implement a call here?
+		return movement_lists
+
+	def w_down_hover_plot_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_2))
+		#plant whatever then go up
+		#should we implement a call here?
+		return movement_lists
+
+	def w_down_hover_plot_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_3))
+		#plant whatever then go up
+		#should we implement a call here?
+		return movement_lists
+
+	def w_down_hover_plot_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot, ROScalls.hover_plot_4))
+		#plant whatever then go up
+		#should we implement a call here?
+		return movement_lists
+
+	#up hover from the plots
+	def w_up_hover_plot_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_1, ROScalls.hover_plot))
+		return movement_lists
+	
+	def w_up_hover_plot_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_2, ROScalls.hover_plot))
+		#plant whatever then go up
+		#should we implement a call here?
+		return movement_lists
+
+	def w_up_hover_plot_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_3, ROScalls.hover_plot))
+		#plant whatever then go up
+		#should we implement a call here?
+		return movement_lists
+
+	def w_up_hover_plot_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_4, ROScalls.hover_plot))
+		#plant whatever then go up
+		#should we implement a call here?
+		return movement_lists
+	
+	#go down to the plant
+	def w_down_plot_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_1, ROScalls.down_plot_1))
+		#grab the weeb/object that is not needed to remove
+		return movement_lists
+
+	def w_down_plot_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_2, ROScalls.down_plot_2))
+		#grab the weeb/object that is not needed to remove
+		return movement_lists
+
+	def w_down_plot_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_3, ROScalls.down_plot_3))
+		#grab the weeb/object that is not needed to remove
+		return movement_lists
+
+	def w_down_plot_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.hover_plot_4, ROScalls.down_plot_4))
+		#grab the weeb/object that is not needed to remove
+		return movement_lists
+
+	#from the plot to the hover plot
+	def w_up_plot_1(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_plot_1, ROScalls.hover_plot_1))
+		return movement_lists
+
+	def w_up_plot_2(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_plot_2, ROScalls.hover_plot_2))
+		return movement_lists
+
+	def w_up_plot_3(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_plot_3, ROScalls.hover_plot_3))
+		return movement_lists
+
+	def w_up_plot_4(self):
+		movement_list = []
+		movement_list.append(SawyerMovement(ROScalls.down_plot_4, ROScalls.hover_plot_4))
+		return movement_lists
+
         
 class GripperMovement:
     def __init__(self, action):
@@ -417,6 +527,19 @@ if __name__ == '__main__':
     
     # Step 2: Decode into cell-by-cell instructions
     # Note that this is always done in order p0->...->p3
+
+    #pseudocode, of course something will be done for each one, but this is the general idea
+    # start
+    # 	(something_in_plot_1) ? ((is_what_we_want) ? move_to_plot_2: weed_plot_1 -> plant_plot_1) : plant_plot_1
+    # 	(something_in_plot_2) ? ((is_what_we_want) ? move_to_plot_3: weed_plot_2 -> plant_plot_2) : plant_plot_2
+    # 	(something_in_plot_3) ? ((is_what_we_want) ? move_to_plot_4: weed_plot_3 -> plant_plot_3) : plant_plot_3
+    # 	(something_in_plot_4) ? ((is_what_we_want) ? finish : weed_plot_4 -> plant_plot_4) : plant_plot_4
+    # finish
+
+
+
+
+
     main_instruction_set = []
     for cell_number, seed in enumerate(plant_list):
         new_plant_movements = PlantInstruction(seed, cell_number)
