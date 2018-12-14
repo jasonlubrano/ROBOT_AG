@@ -180,9 +180,15 @@ if __name__ == '__main__':
     robot_state.enable()
 
     # Step 1: Get instructions from Claire's frontend
-    plant_list = [0,1,2,3]  # frontEnd.get_user_input()t(plant)
-	# print(ok)
-	# plant_list = [0,1,2,3]
+    plants =  pd.read_excel('plant.xlsx', sheet_name=1)
+    vals = plants.values
+    vals = vals[0]
+    plants = []
+    for i in range(1,5):
+        plants.append(int(vals[i]))
+    plant_list = plants  # frontEnd.get_user_input()t(plant)
+    # print(ok)
+    # plant_list = [0,1,2,3]
 
     # Output format: plant_list = [p0, p1, p2, p3] or something similar...
     # |----|----|
