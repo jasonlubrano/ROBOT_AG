@@ -1,0 +1,7 @@
+carnation
+empty
+gardenia
+lisianthus
+rose
+weed1
+weed2
